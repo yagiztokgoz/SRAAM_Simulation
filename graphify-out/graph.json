@@ -1,0 +1,5509 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "physics_integration_loop",
+        "label": "6-DoF Physics Integration Loop",
+        "nodes": [
+          "environment_environment",
+          "kinematics_kinematics",
+          "aerodynamics_aerodynamics",
+          "propulsion_propulsion",
+          "forces_forces",
+          "euler_euler",
+          "newton_newton"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.95,
+        "source_file": "simulate.py"
+      },
+      {
+        "id": "guidance_sensor_chain",
+        "label": "Midcourse-to-Terminal Guidance Hand-off Chain",
+        "nodes": [
+          "sensor_sensor",
+          "guidance_guidance",
+          "ins_ins"
+        ],
+        "relation": "implement",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "simulate.py"
+      },
+      {
+        "id": "autopilot_variants_pattern",
+        "label": "Multi-Mode Autopilot Pattern (Accel / NDI / INDI / NDI-CoP)",
+        "nodes": [
+          "control_control_accel",
+          "control_control_ndi",
+          "control_control_indi",
+          "control_control_ndi_cop"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "missile/control.py"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "sensor.py",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L1",
+      "id": "missile_sensor_py",
+      "community": 6,
+      "norm_label": "sensor.py"
+    },
+    {
+      "label": "_pol_from_cart()",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L31",
+      "id": "missile_sensor_pol_from_cart",
+      "community": 6,
+      "norm_label": "_pol_from_cart()"
+    },
+    {
+      "label": "_mat2tr()",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L44",
+      "id": "missile_sensor_mat2tr",
+      "community": 6,
+      "norm_label": "_mat2tr()"
+    },
+    {
+      "label": "Sensor",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L55",
+      "id": "missile_sensor_sensor",
+      "community": 6,
+      "norm_label": "sensor"
+    },
+    {
+      "label": "object",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "id": "object",
+      "community": 0,
+      "norm_label": "object"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L57",
+      "id": "missile_sensor_sensor_init",
+      "community": 6,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".sensor()",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L88",
+      "id": "missile_sensor_sensor_sensor",
+      "community": 6,
+      "norm_label": ".sensor()"
+    },
+    {
+      "label": "._sensor_kin()",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "L139",
+      "id": "missile_sensor_sensor_sensor_kin",
+      "community": 6,
+      "norm_label": "._sensor_kin()"
+    },
+    {
+      "label": "Kinematic (ideal) seeker \u2014 SRAAM6 port of CADAC sensor.cpp (sensor_ir_kin).  Pha",
+      "file_type": "rationale",
+      "source_file": "missile/sensor.py",
+      "source_location": "L1",
+      "id": "missile_sensor_rationale_1",
+      "community": 6,
+      "norm_label": "kinematic (ideal) seeker \u2014 sraam6 port of cadac sensor.cpp (sensor_ir_kin).  pha"
+    },
+    {
+      "label": "Cartesian \u2192 (range, azimuth, elevation) in CADAC convention.",
+      "file_type": "rationale",
+      "source_file": "missile/sensor.py",
+      "source_location": "L32",
+      "id": "missile_sensor_rationale_32",
+      "community": 6,
+      "norm_label": "cartesian \u2192 (range, azimuth, elevation) in cadac convention."
+    },
+    {
+      "label": "2-axis rotation DCM (az then el, no roll). Same as guidance.mat2tr.",
+      "file_type": "rationale",
+      "source_file": "missile/sensor.py",
+      "source_location": "L45",
+      "id": "missile_sensor_rationale_45",
+      "community": 6,
+      "norm_label": "2-axis rotation dcm (az then el, no roll). same as guidance.mat2tr."
+    },
+    {
+      "label": "Zero the seeker output channels on the missile object.",
+      "file_type": "rationale",
+      "source_file": "missile/sensor.py",
+      "source_location": "L76",
+      "id": "missile_sensor_rationale_76",
+      "community": 6,
+      "norm_label": "zero the seeker output channels on the missile object."
+    },
+    {
+      "label": "Ideal seeker: LOS angles + inertial LOS rates from geometry.          CADAC sens",
+      "file_type": "rationale",
+      "source_file": "missile/sensor.py",
+      "source_location": "L140",
+      "id": "missile_sensor_rationale_140",
+      "community": 6,
+      "norm_label": "ideal seeker: los angles + inertial los rates from geometry.          cadac sens"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "missile/__init__.py",
+      "source_location": "L1",
+      "id": "missile_init_py",
+      "community": 0,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "ins.py",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L1",
+      "id": "missile_ins_py",
+      "community": 5,
+      "norm_label": "ins.py"
+    },
+    {
+      "label": "_integrate_vec()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L29",
+      "id": "missile_ins_integrate_vec",
+      "community": 5,
+      "norm_label": "_integrate_vec()"
+    },
+    {
+      "label": "_skew()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L34",
+      "id": "missile_ins_skew",
+      "community": 5,
+      "norm_label": "_skew()"
+    },
+    {
+      "label": "INS",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L42",
+      "id": "missile_ins_ins",
+      "community": 5,
+      "norm_label": "ins"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L44",
+      "id": "missile_ins_ins_init",
+      "community": 5,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".ins()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L102",
+      "id": "missile_ins_ins_ins",
+      "community": 5,
+      "norm_label": ".ins()"
+    },
+    {
+      "label": "._gyro_errors()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L212",
+      "id": "missile_ins_ins_gyro_errors",
+      "community": 5,
+      "norm_label": "._gyro_errors()"
+    },
+    {
+      "label": "._accl_errors()",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "L226",
+      "id": "missile_ins_ins_accl_errors",
+      "community": 5,
+      "norm_label": "._accl_errors()"
+    },
+    {
+      "label": "INS (Inertial Navigation System) \u2014 SRAAM6 port of CADAC ins.cpp.  Ported with SR",
+      "file_type": "rationale",
+      "source_file": "missile/ins.py",
+      "source_location": "L1",
+      "id": "missile_ins_rationale_1",
+      "community": 5,
+      "norm_label": "ins (inertial navigation system) \u2014 sraam6 port of cadac ins.cpp.  ported with sr"
+    },
+    {
+      "label": "Trapezoidal integration \u2014 matches the CADAC convention used elsewhere.",
+      "file_type": "rationale",
+      "source_file": "missile/ins.py",
+      "source_location": "L30",
+      "id": "missile_ins_rationale_30",
+      "community": 5,
+      "norm_label": "trapezoidal integration \u2014 matches the cadac convention used elsewhere."
+    },
+    {
+      "label": "Seed estimate channels with truth at t=0 (perfect alignment).",
+      "file_type": "rationale",
+      "source_file": "missile/ins.py",
+      "source_location": "L81",
+      "id": "missile_ins_rationale_81",
+      "community": 5,
+      "norm_label": "seed estimate channels with truth at t=0 (perfect alignment)."
+    },
+    {
+      "label": "Returns (EWBEB, WBECB_meas). EWBEB = measurement error - rad/s.",
+      "file_type": "rationale",
+      "source_file": "missile/ins.py",
+      "source_location": "L213",
+      "id": "missile_ins_rationale_213",
+      "community": 5,
+      "norm_label": "returns (ewbeb, wbecb_meas). ewbeb = measurement error - rad/s."
+    },
+    {
+      "label": "Returns accelerometer measurement error EFSPB (random walk applied later).",
+      "file_type": "rationale",
+      "source_file": "missile/ins.py",
+      "source_location": "L227",
+      "id": "missile_ins_rationale_227",
+      "community": 5,
+      "norm_label": "returns accelerometer measurement error efspb (random walk applied later)."
+    },
+    {
+      "label": "aerodynamics.py",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L1",
+      "id": "missile_aerodynamics_py",
+      "community": 10,
+      "norm_label": "aerodynamics.py"
+    },
+    {
+      "label": "Aerodynamics",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L8",
+      "id": "missile_aerodynamics_aerodynamics",
+      "community": 10,
+      "norm_label": "aerodynamics"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L10",
+      "id": "missile_aerodynamics_aerodynamics_init",
+      "community": 10,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".aerodynamics()",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L85",
+      "id": "missile_aerodynamics_aerodynamics_aerodynamics",
+      "community": 10,
+      "norm_label": ".aerodynamics()"
+    },
+    {
+      "label": ".aerodynamics_der()",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L200",
+      "id": "missile_aerodynamics_aerodynamics_aerodynamics_der",
+      "community": 10,
+      "norm_label": ".aerodynamics_der()"
+    },
+    {
+      "label": "Calculates aerodynamic coefficients from look-up tables.",
+      "file_type": "rationale",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L86",
+      "id": "missile_aerodynamics_rationale_86",
+      "community": 10,
+      "norm_label": "calculates aerodynamic coefficients from look-up tables."
+    },
+    {
+      "label": "On-line calculation of aero derivatives for the aero-adaptive autopilot.",
+      "file_type": "rationale",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L201",
+      "id": "missile_aerodynamics_rationale_201",
+      "community": 10,
+      "norm_label": "on-line calculation of aero derivatives for the aero-adaptive autopilot."
+    },
+    {
+      "label": "missile.py",
+      "file_type": "code",
+      "source_file": "missile/missile.py",
+      "source_location": "L1",
+      "id": "missile_missile_py",
+      "community": 0,
+      "norm_label": "missile.py"
+    },
+    {
+      "label": "Missile",
+      "file_type": "code",
+      "source_file": "missile/missile.py",
+      "source_location": "L19",
+      "id": "missile_missile_missile",
+      "community": 0,
+      "norm_label": "missile"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/missile.py",
+      "source_location": "L20",
+      "id": "missile_missile_missile_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "kinematics.py",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L1",
+      "id": "missile_kinematics_py",
+      "community": 7,
+      "norm_label": "kinematics.py"
+    },
+    {
+      "label": "_sign()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L10",
+      "id": "missile_kinematics_sign",
+      "community": 7,
+      "norm_label": "_sign()"
+    },
+    {
+      "label": "_integrate()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L14",
+      "id": "missile_kinematics_integrate",
+      "community": 7,
+      "norm_label": "_integrate()"
+    },
+    {
+      "label": "_mat3tr()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L19",
+      "id": "missile_kinematics_mat3tr",
+      "community": 7,
+      "norm_label": "_mat3tr()"
+    },
+    {
+      "label": "Kinematics",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L40",
+      "id": "missile_kinematics_kinematics",
+      "community": 7,
+      "norm_label": "kinematics"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L42",
+      "id": "missile_kinematics_kinematics_init",
+      "community": 7,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._init_from_euler()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L68",
+      "id": "missile_kinematics_kinematics_init_from_euler",
+      "community": 7,
+      "norm_label": "._init_from_euler()"
+    },
+    {
+      "label": ".kinematics()",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L100",
+      "id": "missile_kinematics_kinematics_kinematics",
+      "community": 7,
+      "norm_label": ".kinematics()"
+    },
+    {
+      "label": "Trapezoidal integration (CADAC standard).",
+      "file_type": "rationale",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L15",
+      "id": "missile_kinematics_rationale_15",
+      "community": 7,
+      "norm_label": "trapezoidal integration (cadac standard)."
+    },
+    {
+      "label": "Direction cosine matrix body-wrt-local for 3-2-1 (Z-Y-X) Euler sequence.      Ar",
+      "file_type": "rationale",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L20",
+      "id": "missile_kinematics_rationale_20",
+      "community": 7,
+      "norm_label": "direction cosine matrix body-wrt-local for 3-2-1 (z-y-x) euler sequence.      ar"
+    },
+    {
+      "label": "Set quaternion and TBL from missile initial Euler angles (psix/thtx/phix).",
+      "file_type": "rationale",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L69",
+      "id": "missile_kinematics_rationale_69",
+      "community": 7,
+      "norm_label": "set quaternion and tbl from missile initial euler angles (psix/thtx/phix)."
+    },
+    {
+      "label": "Integrates quaternion ODEs; updates DCM, Euler angles, and incidence angles.",
+      "file_type": "rationale",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L101",
+      "id": "missile_kinematics_rationale_101",
+      "community": 7,
+      "norm_label": "integrates quaternion odes; updates dcm, euler angles, and incidence angles."
+    },
+    {
+      "label": "database.py",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L1",
+      "id": "missile_database_py",
+      "community": 0,
+      "norm_label": "database.py"
+    },
+    {
+      "label": "SRAAM6_Database",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L5",
+      "id": "missile_database_sraam6_database",
+      "community": 0,
+      "norm_label": "sraam6_database"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L6",
+      "id": "missile_database_sraam6_database_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".load_aero_deck()",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L17",
+      "id": "missile_database_sraam6_database_load_aero_deck",
+      "community": 0,
+      "norm_label": ".load_aero_deck()"
+    },
+    {
+      "label": "._save_aero_table()",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L47",
+      "id": "missile_database_sraam6_database_save_aero_table",
+      "community": 0,
+      "norm_label": "._save_aero_table()"
+    },
+    {
+      "label": ".load_propulsion_deck()",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "L70",
+      "id": "missile_database_sraam6_database_load_propulsion_deck",
+      "community": 0,
+      "norm_label": ".load_propulsion_deck()"
+    },
+    {
+      "label": "Reads aerodynamic coefficients and builds interpolators.",
+      "file_type": "rationale",
+      "source_file": "missile/database.py",
+      "source_location": "L18",
+      "id": "missile_database_rationale_18",
+      "community": 0,
+      "norm_label": "reads aerodynamic coefficients and builds interpolators."
+    },
+    {
+      "label": "Converts the raw number list into SciPy interpolation objects.",
+      "file_type": "rationale",
+      "source_file": "missile/database.py",
+      "source_location": "L48",
+      "id": "missile_database_rationale_48",
+      "community": 0,
+      "norm_label": "converts the raw number list into scipy interpolation objects."
+    },
+    {
+      "label": "Reads engine and mass data and builds interpolators.",
+      "file_type": "rationale",
+      "source_file": "missile/database.py",
+      "source_location": "L71",
+      "id": "missile_database_rationale_71",
+      "community": 0,
+      "norm_label": "reads engine and mass data and builds interpolators."
+    },
+    {
+      "label": "euler.py",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "L1",
+      "id": "missile_euler_py",
+      "community": 0,
+      "norm_label": "euler.py"
+    },
+    {
+      "label": "_integrate()",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "L4",
+      "id": "missile_euler_integrate",
+      "community": 0,
+      "norm_label": "_integrate()"
+    },
+    {
+      "label": "Euler",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "L9",
+      "id": "missile_euler_euler",
+      "community": 0,
+      "norm_label": "euler"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "L11",
+      "id": "missile_euler_euler_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".euler()",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "L20",
+      "id": "missile_euler_euler_euler",
+      "community": 0,
+      "norm_label": ".euler()"
+    },
+    {
+      "label": "Trapezoidal integration (CADAC standard).",
+      "file_type": "rationale",
+      "source_file": "missile/euler.py",
+      "source_location": "L5",
+      "id": "missile_euler_rationale_5",
+      "community": 0,
+      "norm_label": "trapezoidal integration (cadac standard)."
+    },
+    {
+      "label": "Rotational equations of motion for an axisymmetric missile.          Euler equat",
+      "file_type": "rationale",
+      "source_file": "missile/euler.py",
+      "source_location": "L21",
+      "id": "missile_euler_rationale_21",
+      "community": 0,
+      "norm_label": "rotational equations of motion for an axisymmetric missile.          euler equat"
+    },
+    {
+      "label": "propulsion.py",
+      "file_type": "code",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L1",
+      "id": "missile_propulsion_py",
+      "community": 0,
+      "norm_label": "propulsion.py"
+    },
+    {
+      "label": "Propulsion",
+      "file_type": "code",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L4",
+      "id": "missile_propulsion_propulsion",
+      "community": 0,
+      "norm_label": "propulsion"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L6",
+      "id": "missile_propulsion_propulsion_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".propulsion()",
+      "file_type": "code",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L25",
+      "id": "missile_propulsion_propulsion_propulsion",
+      "community": 0,
+      "norm_label": ".propulsion()"
+    },
+    {
+      "label": "Calculates mass properties and rocket thrust at altitude.          mprop modes:",
+      "file_type": "rationale",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L26",
+      "id": "missile_propulsion_rationale_26",
+      "community": 0,
+      "norm_label": "calculates mass properties and rocket thrust at altitude.          mprop modes:"
+    },
+    {
+      "label": "control.py",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L1",
+      "id": "missile_control_py",
+      "community": 3,
+      "norm_label": "control.py"
+    },
+    {
+      "label": "_sign()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L11",
+      "id": "missile_control_sign",
+      "community": 3,
+      "norm_label": "_sign()"
+    },
+    {
+      "label": "_integrate()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L15",
+      "id": "missile_control_integrate",
+      "community": 3,
+      "norm_label": "_integrate()"
+    },
+    {
+      "label": "Control",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L20",
+      "id": "missile_control_control",
+      "community": 3,
+      "norm_label": "control"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L22",
+      "id": "missile_control_control_init",
+      "community": 3,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".control()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L78",
+      "id": "missile_control_control_control",
+      "community": 3,
+      "norm_label": ".control()"
+    },
+    {
+      "label": ".control_roll()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L110",
+      "id": "missile_control_control_control_roll",
+      "community": 3,
+      "norm_label": ".control_roll()"
+    },
+    {
+      "label": ".control_rate()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L144",
+      "id": "missile_control_control_control_rate",
+      "community": 3,
+      "norm_label": ".control_rate()"
+    },
+    {
+      "label": ".control_accel()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L194",
+      "id": "missile_control_control_control_accel",
+      "community": 3,
+      "norm_label": ".control_accel()"
+    },
+    {
+      "label": ".control_ndi()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L295",
+      "id": "missile_control_control_control_ndi",
+      "community": 3,
+      "norm_label": ".control_ndi()"
+    },
+    {
+      "label": ".control_indi()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L436",
+      "id": "missile_control_control_control_indi",
+      "community": 3,
+      "norm_label": ".control_indi()"
+    },
+    {
+      "label": ".control_ndi_cop()",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "L577",
+      "id": "missile_control_control_control_ndi_cop",
+      "community": 3,
+      "norm_label": ".control_ndi_cop()"
+    },
+    {
+      "label": "Trapezoidal integration (CADAC standard).",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L16",
+      "id": "missile_control_rationale_16",
+      "community": 3,
+      "norm_label": "trapezoidal integration (cadac standard)."
+    },
+    {
+      "label": "Selects and calls control sub-modules.",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L79",
+      "id": "missile_control_rationale_79",
+      "community": 3,
+      "norm_label": "selects and calls control sub-modules."
+    },
+    {
+      "label": "Calculates roll gains and commanded roll fin deflection.",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L111",
+      "id": "missile_control_rationale_111",
+      "community": 3,
+      "norm_label": "calculates roll gains and commanded roll fin deflection."
+    },
+    {
+      "label": "Calculates rate gyro feedback gain and pitch/yaw rate commands.",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L145",
+      "id": "missile_control_rationale_145",
+      "community": 3,
+      "norm_label": "calculates rate gyro feedback gain and pitch/yaw rate commands."
+    },
+    {
+      "label": "Pole-placement acceleration controller for pitch and yaw planes.",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L195",
+      "id": "missile_control_rationale_195",
+      "community": 3,
+      "norm_label": "pole-placement acceleration controller for pitch and yaw planes."
+    },
+    {
+      "label": "Nonlinear Dynamic Inversion style accel autopilot.             Outer loop: accel",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L296",
+      "id": "missile_control_rationale_296",
+      "community": 3,
+      "norm_label": "nonlinear dynamic inversion style accel autopilot.             outer loop: accel"
+    },
+    {
+      "label": "Incremental Nonlinear Dynamic Inversion autopilot.          Same outer/middle lo",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L437",
+      "id": "missile_control_rationale_437",
+      "community": 3,
+      "norm_label": "incremental nonlinear dynamic inversion autopilot.          same outer/middle lo"
+    },
+    {
+      "label": "NDI autopilot reformulated about the Center of Percussion (CoP).          The Co",
+      "file_type": "rationale",
+      "source_file": "missile/control.py",
+      "source_location": "L578",
+      "id": "missile_control_rationale_578",
+      "community": 3,
+      "norm_label": "ndi autopilot reformulated about the center of percussion (cop).          the co"
+    },
+    {
+      "label": "actuator.py",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L1",
+      "id": "missile_actuator_py",
+      "community": 9,
+      "norm_label": "actuator.py"
+    },
+    {
+      "label": "_sign()",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L4",
+      "id": "missile_actuator_sign",
+      "community": 9,
+      "norm_label": "_sign()"
+    },
+    {
+      "label": "Actuator",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L13",
+      "id": "missile_actuator_actuator",
+      "community": 9,
+      "norm_label": "actuator"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L15",
+      "id": "missile_actuator_actuator_init",
+      "community": 9,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".actuator()",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L51",
+      "id": "missile_actuator_actuator_actuator",
+      "community": 9,
+      "norm_label": ".actuator()"
+    },
+    {
+      "label": ".actuator_scnd()",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "L118",
+      "id": "missile_actuator_actuator_actuator_scnd",
+      "community": 9,
+      "norm_label": ".actuator_scnd()"
+    },
+    {
+      "label": "Returns +1 for positive, -1 for negative, 0 for zero.",
+      "file_type": "rationale",
+      "source_file": "missile/actuator.py",
+      "source_location": "L5",
+      "id": "missile_actuator_rationale_5",
+      "community": 9,
+      "norm_label": "returns +1 for positive, -1 for negative, 0 for zero."
+    },
+    {
+      "label": "Converts autopilot commands to fin deflections.",
+      "file_type": "rationale",
+      "source_file": "missile/actuator.py",
+      "source_location": "L52",
+      "id": "missile_actuator_rationale_52",
+      "community": 9,
+      "norm_label": "converts autopilot commands to fin deflections."
+    },
+    {
+      "label": "Second order actuator dynamics (Euler integration).",
+      "file_type": "rationale",
+      "source_file": "missile/actuator.py",
+      "source_location": "L119",
+      "id": "missile_actuator_rationale_119",
+      "community": 9,
+      "norm_label": "second order actuator dynamics (euler integration)."
+    },
+    {
+      "label": "forces.py",
+      "file_type": "code",
+      "source_file": "missile/forces.py",
+      "source_location": "L1",
+      "id": "missile_forces_py",
+      "community": 0,
+      "norm_label": "forces.py"
+    },
+    {
+      "label": "Forces",
+      "file_type": "code",
+      "source_file": "missile/forces.py",
+      "source_location": "L4",
+      "id": "missile_forces_forces",
+      "community": 0,
+      "norm_label": "forces"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/forces.py",
+      "source_location": "L6",
+      "id": "missile_forces_forces_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forces()",
+      "file_type": "code",
+      "source_file": "missile/forces.py",
+      "source_location": "L14",
+      "id": "missile_forces_forces_forces",
+      "community": 0,
+      "norm_label": ".forces()"
+    },
+    {
+      "label": "Calculates non-gravitational forces and aerodynamic moments in body axes.",
+      "file_type": "rationale",
+      "source_file": "missile/forces.py",
+      "source_location": "L15",
+      "id": "missile_forces_rationale_15",
+      "community": 0,
+      "norm_label": "calculates non-gravitational forces and aerodynamic moments in body axes."
+    },
+    {
+      "label": "guidance.py",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L1",
+      "id": "missile_guidance_py",
+      "community": 4,
+      "norm_label": "guidance.py"
+    },
+    {
+      "label": "pol_from_cart()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L12",
+      "id": "missile_guidance_pol_from_cart",
+      "community": 4,
+      "norm_label": "pol_from_cart()"
+    },
+    {
+      "label": "mat2tr()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L30",
+      "id": "missile_guidance_mat2tr",
+      "community": 4,
+      "norm_label": "mat2tr()"
+    },
+    {
+      "label": "Guidance",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L49",
+      "id": "missile_guidance_guidance",
+      "community": 4,
+      "norm_label": "guidance"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L61",
+      "id": "missile_guidance_guidance_init",
+      "community": 4,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".guidance()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L83",
+      "id": "missile_guidance_guidance_guidance",
+      "community": 4,
+      "norm_label": ".guidance()"
+    },
+    {
+      "label": "._pronav_mid()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L182",
+      "id": "missile_guidance_guidance_pronav_mid",
+      "community": 4,
+      "norm_label": "._pronav_mid()"
+    },
+    {
+      "label": "._line_mid()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L241",
+      "id": "missile_guidance_guidance_line_mid",
+      "community": 4,
+      "norm_label": "._line_mid()"
+    },
+    {
+      "label": "._pronav_term_comp()",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "L316",
+      "id": "missile_guidance_guidance_pronav_term_comp",
+      "community": 4,
+      "norm_label": "._pronav_term_comp()"
+    },
+    {
+      "label": "Cartesian \u2192 spherical (CADAC convention).      Returns [range, azimuth, elevatio",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L13",
+      "id": "missile_guidance_rationale_13",
+      "community": 4,
+      "norm_label": "cartesian \u2192 spherical (cadac convention).      returns [range, azimuth, elevatio"
+    },
+    {
+      "label": "2-axis rotation DCM (azimuth then elevation), no roll.      Equivalent to mat3tr",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L31",
+      "id": "missile_guidance_rationale_31",
+      "community": 4,
+      "norm_label": "2-axis rotation dcm (azimuth then elevation), no roll.      equivalent to mat3tr"
+    },
+    {
+      "label": "Guidance module for SRAAM6.      mguid = |mid|term| where:         mid  = 0  no",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L50",
+      "id": "missile_guidance_rationale_50",
+      "community": 4,
+      "norm_label": "guidance module for sraam6.      mguid = |mid|term| where:         mid  = 0  no"
+    },
+    {
+      "label": "Compute acceleration commands ancomx, alcomx (g's).          Reads from missile:",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L84",
+      "id": "missile_guidance_rationale_84",
+      "community": 4,
+      "norm_label": "compute acceleration commands ancomx, alcomx (g's).          reads from missile:"
+    },
+    {
+      "label": "Pro-nav from third-party kinematic data.          Args:             STBLC: targe",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L183",
+      "id": "missile_guidance_rationale_183",
+      "community": 4,
+      "norm_label": "pro-nav from third-party kinematic data.          args:             stblc: targe"
+    },
+    {
+      "label": "Line guidance: steer missile along the target-aircraft line.          Args:",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L242",
+      "id": "missile_guidance_rationale_242",
+      "community": 4,
+      "norm_label": "line guidance: steer missile along the target-aircraft line.          args:"
+    },
+    {
+      "label": "Terminal compensated pro-nav (requires seeker data).          Reads from missile",
+      "file_type": "rationale",
+      "source_file": "missile/guidance.py",
+      "source_location": "L317",
+      "id": "missile_guidance_rationale_317",
+      "community": 4,
+      "norm_label": "terminal compensated pro-nav (requires seeker data).          reads from missile"
+    },
+    {
+      "label": "newton.py",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "L1",
+      "id": "missile_newton_py",
+      "community": 0,
+      "norm_label": "newton.py"
+    },
+    {
+      "label": "_integrate_vec()",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "L5",
+      "id": "missile_newton_integrate_vec",
+      "community": 0,
+      "norm_label": "_integrate_vec()"
+    },
+    {
+      "label": "Newton",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "L10",
+      "id": "missile_newton_newton",
+      "community": 0,
+      "norm_label": "newton"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "L12",
+      "id": "missile_newton_newton_init",
+      "community": 0,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".newton()",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "L53",
+      "id": "missile_newton_newton_newton",
+      "community": 0,
+      "norm_label": ".newton()"
+    },
+    {
+      "label": "Trapezoidal integration for 3-element numpy vectors.",
+      "file_type": "rationale",
+      "source_file": "missile/newton.py",
+      "source_location": "L6",
+      "id": "missile_newton_rationale_6",
+      "community": 0,
+      "norm_label": "trapezoidal integration for 3-element numpy vectors."
+    },
+    {
+      "label": "Populate initial VBEL, hbe, dvbe on the missile object.",
+      "file_type": "rationale",
+      "source_file": "missile/newton.py",
+      "source_location": "L38",
+      "id": "missile_newton_rationale_38",
+      "community": 0,
+      "norm_label": "populate initial vbel, hbe, dvbe on the missile object."
+    },
+    {
+      "label": "Translational equations of motion (Newton's 2nd Law in body axes).          Read",
+      "file_type": "rationale",
+      "source_file": "missile/newton.py",
+      "source_location": "L54",
+      "id": "missile_newton_rationale_54",
+      "community": 0,
+      "norm_label": "translational equations of motion (newton's 2nd law in body axes).          read"
+    },
+    {
+      "label": "environment.py",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "L1",
+      "id": "missile_environment_py",
+      "community": 11,
+      "norm_label": "environment.py"
+    },
+    {
+      "label": "atmosphere76()",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "L11",
+      "id": "missile_environment_atmosphere76",
+      "community": 11,
+      "norm_label": "atmosphere76()"
+    },
+    {
+      "label": "Environment",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "L61",
+      "id": "missile_environment_environment",
+      "community": 11,
+      "norm_label": "environment"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "L63",
+      "id": "missile_environment_environment_init",
+      "community": 11,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".environment()",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "L81",
+      "id": "missile_environment_environment_environment",
+      "community": 11,
+      "norm_label": ".environment()"
+    },
+    {
+      "label": "US 1976 Standard Atmosphere.      Args:         hbe: geometric altitude above MS",
+      "file_type": "rationale",
+      "source_file": "missile/environment.py",
+      "source_location": "L12",
+      "id": "missile_environment_rationale_12",
+      "community": 11,
+      "norm_label": "us 1976 standard atmosphere.      args:         hbe: geometric altitude above ms"
+    },
+    {
+      "label": "Computes atmosphere, gravity, Mach number, and dynamic pressure.          Reads",
+      "file_type": "rationale",
+      "source_file": "missile/environment.py",
+      "source_location": "L82",
+      "id": "missile_environment_rationale_82",
+      "community": 11,
+      "norm_label": "computes atmosphere, gravity, mach number, and dynamic pressure.          reads"
+    },
+    {
+      "label": "target.py",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L1",
+      "id": "target_py",
+      "community": 8,
+      "norm_label": "target.py"
+    },
+    {
+      "label": "_cw_perp()",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L23",
+      "id": "missile_main_main_target_cw_perp",
+      "community": 8,
+      "norm_label": "_cw_perp()"
+    },
+    {
+      "label": "Target",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L37",
+      "id": "missile_main_main_target_target",
+      "community": 8,
+      "norm_label": "target"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L74",
+      "id": "missile_main_main_target_target_init",
+      "community": 8,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": "._accel()",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L82",
+      "id": "missile_main_main_target_target_accel",
+      "community": 8,
+      "norm_label": "._accel()"
+    },
+    {
+      "label": ".state()",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L177",
+      "id": "missile_main_main_target_target_state",
+      "community": 8,
+      "norm_label": ".state()"
+    },
+    {
+      "label": ".step()",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "L187",
+      "id": "missile_main_main_target_target_step",
+      "community": 8,
+      "norm_label": ".step()"
+    },
+    {
+      "label": "Target scenarios for SRAAM6 simulation.  NED frame [North, East, Down],  hbe = -",
+      "file_type": "rationale",
+      "source_file": "target.py",
+      "source_location": "L1",
+      "id": "missile_main_main_target_rationale_1",
+      "community": 8,
+      "norm_label": "target scenarios for sraam6 simulation.  ned frame [north, east, down],  hbe = -"
+    },
+    {
+      "label": "Unit vector 90\u00b0 clockwise from the horizontal velocity component.      For vel h",
+      "file_type": "rationale",
+      "source_file": "target.py",
+      "source_location": "L24",
+      "id": "missile_main_main_target_rationale_24",
+      "community": 8,
+      "norm_label": "unit vector 90\u00b0 clockwise from the horizontal velocity component.      for vel h"
+    },
+    {
+      "label": "Return (pos, vel) at simulation time t.          S1 uses the exact analytic (con",
+      "file_type": "rationale",
+      "source_file": "target.py",
+      "source_location": "L178",
+      "id": "missile_main_main_target_rationale_178",
+      "community": 8,
+      "norm_label": "return (pos, vel) at simulation time t.          s1 uses the exact analytic (con"
+    },
+    {
+      "label": "Advance internal state by dt using a first-order Euler step.",
+      "file_type": "rationale",
+      "source_file": "target.py",
+      "source_location": "L188",
+      "id": "missile_main_main_target_rationale_188",
+      "community": 8,
+      "norm_label": "advance internal state by dt using a first-order euler step."
+    },
+    {
+      "label": "config.py",
+      "file_type": "code",
+      "source_file": "config.py",
+      "source_location": "L1",
+      "id": "config_py",
+      "community": 12,
+      "norm_label": "config.py"
+    },
+    {
+      "label": "================================================================================",
+      "file_type": "rationale",
+      "source_file": "config.py",
+      "source_location": "L1",
+      "id": "missile_main_main_config_rationale_1",
+      "community": 12,
+      "norm_label": "================================================================================"
+    },
+    {
+      "label": "simulate.py",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L1",
+      "id": "simulate_py",
+      "community": 2,
+      "norm_label": "simulate.py"
+    },
+    {
+      "label": "_parse_scenario()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L290",
+      "id": "missile_main_main_simulate_parse_scenario",
+      "community": 2,
+      "norm_label": "_parse_scenario()"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L304",
+      "id": "missile_main_main_simulate_run",
+      "community": 2,
+      "norm_label": "run()"
+    },
+    {
+      "label": "save_csv()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L507",
+      "id": "missile_main_main_simulate_save_csv",
+      "community": 2,
+      "norm_label": "save_csv()"
+    },
+    {
+      "label": "save_unity()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L520",
+      "id": "missile_main_main_simulate_save_unity",
+      "community": 2,
+      "norm_label": "save_unity()"
+    },
+    {
+      "label": "run_all()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L535",
+      "id": "missile_main_main_simulate_run_all",
+      "community": 2,
+      "norm_label": "run_all()"
+    },
+    {
+      "label": "_print_summary_table()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L557",
+      "id": "missile_main_main_simulate_print_summary_table",
+      "community": 2,
+      "norm_label": "_print_summary_table()"
+    },
+    {
+      "label": "compare()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L579",
+      "id": "missile_main_main_simulate_compare",
+      "community": 2,
+      "norm_label": "compare()"
+    },
+    {
+      "label": "test()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L632",
+      "id": "missile_main_main_simulate_test",
+      "community": 2,
+      "norm_label": "test()"
+    },
+    {
+      "label": "test_all_scenarios()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L640",
+      "id": "missile_main_main_simulate_test_all_scenarios",
+      "community": 2,
+      "norm_label": "test_all_scenarios()"
+    },
+    {
+      "label": "monte_carlo()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L682",
+      "id": "missile_main_main_simulate_monte_carlo",
+      "community": 2,
+      "norm_label": "monte_carlo()"
+    },
+    {
+      "label": "monte_carlo_all_scenarios()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L807",
+      "id": "missile_main_main_simulate_monte_carlo_all_scenarios",
+      "community": 2,
+      "norm_label": "monte_carlo_all_scenarios()"
+    },
+    {
+      "label": "_print_mc_table()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L859",
+      "id": "missile_main_main_simulate_print_mc_table",
+      "community": 2,
+      "norm_label": "_print_mc_table()"
+    },
+    {
+      "label": "_save_mc_csv()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L874",
+      "id": "missile_main_main_simulate_save_mc_csv",
+      "community": 2,
+      "norm_label": "_save_mc_csv()"
+    },
+    {
+      "label": "_cli_help()",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "L909",
+      "id": "missile_main_main_simulate_cli_help",
+      "community": 2,
+      "norm_label": "_cli_help()"
+    },
+    {
+      "label": "================================================================================",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L1",
+      "id": "missile_main_main_simulate_rationale_1",
+      "community": 2,
+      "norm_label": "================================================================================"
+    },
+    {
+      "label": "Run one scenario. `cfg` optionally overrides any global knob:         mins, ins_",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L305",
+      "id": "missile_main_main_simulate_rationale_305",
+      "community": 2,
+      "norm_label": "run one scenario. `cfg` optionally overrides any global knob:         mins, ins_"
+    },
+    {
+      "label": "Save log to logs/sim_log_<tag>.csv.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L508",
+      "id": "missile_main_main_simulate_rationale_508",
+      "community": 2,
+      "norm_label": "save log to logs/sim_log_<tag>.csv."
+    },
+    {
+      "label": "Save a Unity playback JSON under logs/unity/.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L521",
+      "id": "missile_main_main_simulate_rationale_521",
+      "community": 2,
+      "norm_label": "save a unity playback json under logs/unity/."
+    },
+    {
+      "label": "Run every scenario and print a miss-distance summary.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L536",
+      "id": "missile_main_main_simulate_rationale_536",
+      "community": 2,
+      "norm_label": "run every scenario and print a miss-distance summary."
+    },
+    {
+      "label": "Run one scenario with multiple config variants and render a side-by-side     com",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L580",
+      "id": "missile_main_main_simulate_rationale_580",
+      "community": 2,
+      "norm_label": "run one scenario with multiple config variants and render a side-by-side     com"
+    },
+    {
+      "label": "Run a registered test.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L633",
+      "id": "missile_main_main_simulate_rationale_633",
+      "community": 2,
+      "norm_label": "run a registered test."
+    },
+    {
+      "label": "Run one test across multiple scenarios. Returns miss-distance table.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L641",
+      "id": "missile_main_main_simulate_rationale_641",
+      "community": 2,
+      "norm_label": "run one test across multiple scenarios. returns miss-distance table."
+    },
+    {
+      "label": "Monte Carlo miss-distance analysis with aero model uncertainty + INS noise.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L693",
+      "id": "missile_main_main_simulate_rationale_693",
+      "community": 2,
+      "norm_label": "monte carlo miss-distance analysis with aero model uncertainty + ins noise."
+    },
+    {
+      "label": "Run monte_carlo() across multiple scenarios and print a CEP summary table.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L817",
+      "id": "missile_main_main_simulate_rationale_817",
+      "community": 2,
+      "norm_label": "run monte_carlo() across multiple scenarios and print a cep summary table."
+    },
+    {
+      "label": "Print formatted Monte Carlo statistics table to stdout.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L860",
+      "id": "missile_main_main_simulate_rationale_860",
+      "community": 2,
+      "norm_label": "print formatted monte carlo statistics table to stdout."
+    },
+    {
+      "label": "Save per-run results and aggregate stats to CSV files.",
+      "file_type": "rationale",
+      "source_file": "simulate.py",
+      "source_location": "L875",
+      "id": "missile_main_main_simulate_rationale_875",
+      "community": 2,
+      "norm_label": "save per-run results and aggregate stats to csv files."
+    },
+    {
+      "label": "tests.py",
+      "file_type": "code",
+      "source_file": "tests.py",
+      "source_location": "L1",
+      "id": "tests_py",
+      "community": 13,
+      "norm_label": "tests.py"
+    },
+    {
+      "label": "================================================================================",
+      "file_type": "rationale",
+      "source_file": "tests.py",
+      "source_location": "L1",
+      "id": "missile_main_main_tests_rationale_1",
+      "community": 13,
+      "norm_label": "================================================================================"
+    },
+    {
+      "label": "debug.py",
+      "file_type": "code",
+      "source_file": "debug.py",
+      "source_location": "L1",
+      "id": "debug_py",
+      "community": 1,
+      "norm_label": "debug.py"
+    },
+    {
+      "label": "Missile",
+      "file_type": "code",
+      "source_file": "missile/missile.py",
+      "source_location": "class Missile",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "missile_missile",
+      "community": 1,
+      "norm_label": "missile"
+    },
+    {
+      "label": "Sensor",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "class Sensor",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "sensor_sensor",
+      "community": 1,
+      "norm_label": "sensor"
+    },
+    {
+      "label": "INS",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "class INS",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ins_ins",
+      "community": 1,
+      "norm_label": "ins"
+    },
+    {
+      "label": "Aerodynamics",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "class Aerodynamics",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerodynamics_aerodynamics",
+      "community": 1,
+      "norm_label": "aerodynamics"
+    },
+    {
+      "label": "Kinematics",
+      "file_type": "code",
+      "source_file": "missile/kinematics.py",
+      "source_location": "class Kinematics",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "kinematics_kinematics",
+      "community": 1,
+      "norm_label": "kinematics"
+    },
+    {
+      "label": "SRAAM6_Database",
+      "file_type": "code",
+      "source_file": "missile/database.py",
+      "source_location": "class SRAAM6_Database",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "database_sraam6_database",
+      "community": 1,
+      "norm_label": "sraam6_database"
+    },
+    {
+      "label": "Euler",
+      "file_type": "code",
+      "source_file": "missile/euler.py",
+      "source_location": "class Euler",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "euler_euler",
+      "community": 1,
+      "norm_label": "euler"
+    },
+    {
+      "label": "Propulsion",
+      "file_type": "code",
+      "source_file": "missile/propulsion.py",
+      "source_location": "class Propulsion",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "propulsion_propulsion",
+      "community": 1,
+      "norm_label": "propulsion"
+    },
+    {
+      "label": "Control",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "class Control",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control",
+      "community": 1,
+      "norm_label": "control"
+    },
+    {
+      "label": "Actuator",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "class Actuator",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "actuator_actuator",
+      "community": 1,
+      "norm_label": "actuator"
+    },
+    {
+      "label": "Forces",
+      "file_type": "code",
+      "source_file": "missile/forces.py",
+      "source_location": "class Forces",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "forces_forces",
+      "community": 1,
+      "norm_label": "forces"
+    },
+    {
+      "label": "Guidance",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "class Guidance",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "guidance_guidance",
+      "community": 1,
+      "norm_label": "guidance"
+    },
+    {
+      "label": "Newton",
+      "file_type": "code",
+      "source_file": "missile/newton.py",
+      "source_location": "class Newton",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "newton_newton",
+      "community": 1,
+      "norm_label": "newton"
+    },
+    {
+      "label": "Environment",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "class Environment",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "environment_environment",
+      "community": 1,
+      "norm_label": "environment"
+    },
+    {
+      "label": "config module",
+      "file_type": "code",
+      "source_file": "config.py",
+      "source_location": "module",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "config_config",
+      "community": 1,
+      "norm_label": "config module"
+    },
+    {
+      "label": "simulate.run",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "def run",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "simulate_run",
+      "community": 1,
+      "norm_label": "simulate.run"
+    },
+    {
+      "label": "simulate.monte_carlo",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "def monte_carlo",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "simulate_monte_carlo",
+      "community": 1,
+      "norm_label": "simulate.monte_carlo"
+    },
+    {
+      "label": "simulate.compare",
+      "file_type": "code",
+      "source_file": "simulate.py",
+      "source_location": "def compare",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "simulate_compare",
+      "community": 1,
+      "norm_label": "simulate.compare"
+    },
+    {
+      "label": "Target",
+      "file_type": "code",
+      "source_file": "target.py",
+      "source_location": "class Target",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "target_target",
+      "community": 1,
+      "norm_label": "target"
+    },
+    {
+      "label": "TESTS registry",
+      "file_type": "code",
+      "source_file": "tests.py",
+      "source_location": "TESTS dict",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "tests_tests",
+      "community": 1,
+      "norm_label": "tests registry"
+    },
+    {
+      "label": "Control.control_roll",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_roll",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_roll",
+      "community": 1,
+      "norm_label": "control.control_roll"
+    },
+    {
+      "label": "Control.control_rate",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_rate",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_rate",
+      "community": 1,
+      "norm_label": "control.control_rate"
+    },
+    {
+      "label": "Control.control_accel",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_accel",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_accel",
+      "community": 1,
+      "norm_label": "control.control_accel"
+    },
+    {
+      "label": "Control.control_ndi",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_ndi",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_ndi",
+      "community": 1,
+      "norm_label": "control.control_ndi"
+    },
+    {
+      "label": "Control.control_indi",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_indi",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_indi",
+      "community": 1,
+      "norm_label": "control.control_indi"
+    },
+    {
+      "label": "Control.control_ndi_cop",
+      "file_type": "code",
+      "source_file": "missile/control.py",
+      "source_location": "def control_ndi_cop",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "control_control_ndi_cop",
+      "community": 1,
+      "norm_label": "control.control_ndi_cop"
+    },
+    {
+      "label": "Guidance._pronav_mid",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "def _pronav_mid",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "guidance_pronav_mid",
+      "community": 1,
+      "norm_label": "guidance._pronav_mid"
+    },
+    {
+      "label": "Guidance._pronav_term_comp",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "def _pronav_term_comp",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "guidance_pronav_term_comp",
+      "community": 1,
+      "norm_label": "guidance._pronav_term_comp"
+    },
+    {
+      "label": "Guidance._line_mid",
+      "file_type": "code",
+      "source_file": "missile/guidance.py",
+      "source_location": "def _line_mid",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "guidance_line_mid",
+      "community": 1,
+      "norm_label": "guidance._line_mid"
+    },
+    {
+      "label": "Aerodynamics.aerodynamics_der",
+      "file_type": "code",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "def aerodynamics_der",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "aerodynamics_aerodynamics_der",
+      "community": 1,
+      "norm_label": "aerodynamics.aerodynamics_der"
+    },
+    {
+      "label": "Actuator.actuator_scnd",
+      "file_type": "code",
+      "source_file": "missile/actuator.py",
+      "source_location": "def actuator_scnd",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "actuator_actuator_scnd",
+      "community": 1,
+      "norm_label": "actuator.actuator_scnd"
+    },
+    {
+      "label": "atmosphere76",
+      "file_type": "code",
+      "source_file": "missile/environment.py",
+      "source_location": "def atmosphere76",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "environment_atmosphere76",
+      "community": 1,
+      "norm_label": "atmosphere76"
+    },
+    {
+      "label": "INS._gyro_errors",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "def _gyro_errors",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ins_gyro_errors",
+      "community": 1,
+      "norm_label": "ins._gyro_errors"
+    },
+    {
+      "label": "INS._accl_errors",
+      "file_type": "code",
+      "source_file": "missile/ins.py",
+      "source_location": "def _accl_errors",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "ins_accl_errors",
+      "community": 1,
+      "norm_label": "ins._accl_errors"
+    },
+    {
+      "label": "Sensor._sensor_kin",
+      "file_type": "code",
+      "source_file": "missile/sensor.py",
+      "source_location": "def _sensor_kin",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "sensor_sensor_kin",
+      "community": 1,
+      "norm_label": "sensor._sensor_kin"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "missile_sensor_py",
+      "target": "missile_sensor_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "missile_sensor_py",
+      "target": "missile_sensor_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "missile_sensor_py",
+      "target": "missile_sensor_sensor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_sensor_rationale_1",
+      "target": "missile_sensor_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_sensor_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L166",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor_sensor_kin",
+      "target": "missile_sensor_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "missile_sensor_rationale_32",
+      "target": "missile_sensor_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor_sensor_kin",
+      "target": "missile_sensor_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "missile_sensor_rationale_45",
+      "target": "missile_sensor_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor",
+      "target": "missile_sensor_sensor_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor",
+      "target": "missile_sensor_sensor_sensor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor",
+      "target": "missile_sensor_sensor_sensor_kin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L17",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_sensor_sensor",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "missile_ins_ins",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_aerodynamics",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "missile_missile_missile",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "missile_euler_euler",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_propulsion_propulsion",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/forces.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_forces_forces",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "missile_newton_newton",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "missile_environment_environment",
+      "target": "object",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "missile_sensor_rationale_76",
+      "target": "missile_sensor_sensor_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "missile_sensor_sensor_sensor",
+      "target": "missile_sensor_sensor_sensor_kin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/sensor.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "missile_sensor_rationale_140",
+      "target": "missile_sensor_sensor_sensor_kin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_init_py",
+      "target": "missile_missile_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "missile_ins_py",
+      "target": "missile_ins_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "missile_ins_py",
+      "target": "missile_ins_skew",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "missile_ins_py",
+      "target": "missile_ins_ins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_ins_rationale_1",
+      "target": "missile_ins_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_ins_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "missile_ins_ins_ins",
+      "target": "missile_ins_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "missile_ins_rationale_30",
+      "target": "missile_ins_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "missile_ins_ins_ins",
+      "target": "missile_ins_skew",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L214",
+      "weight": 1.0,
+      "source": "missile_ins_ins_gyro_errors",
+      "target": "missile_ins_skew",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "missile_ins_ins_accl_errors",
+      "target": "missile_ins_skew",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "missile_ins_ins",
+      "target": "missile_ins_ins_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "missile_ins_ins",
+      "target": "missile_ins_ins_ins",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L212",
+      "weight": 1.0,
+      "source": "missile_ins_ins",
+      "target": "missile_ins_ins_gyro_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L226",
+      "weight": 1.0,
+      "source": "missile_ins_ins",
+      "target": "missile_ins_ins_accl_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L16",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_ins_ins",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "missile_ins_rationale_81",
+      "target": "missile_ins_ins_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L128",
+      "weight": 1.0,
+      "source": "missile_ins_ins_ins",
+      "target": "missile_ins_ins_accl_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L129",
+      "weight": 1.0,
+      "source": "missile_ins_ins_ins",
+      "target": "missile_ins_ins_gyro_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L213",
+      "weight": 1.0,
+      "source": "missile_ins_rationale_213",
+      "target": "missile_ins_ins_gyro_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/ins.py",
+      "source_location": "L227",
+      "weight": 1.0,
+      "source": "missile_ins_rationale_227",
+      "target": "missile_ins_ins_accl_errors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_py",
+      "target": "missile_aerodynamics_aerodynamics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_aerodynamics_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_aerodynamics",
+      "target": "missile_aerodynamics_aerodynamics_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_aerodynamics",
+      "target": "missile_aerodynamics_aerodynamics_aerodynamics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L200",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_aerodynamics",
+      "target": "missile_aerodynamics_aerodynamics_aerodynamics_der",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L10",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_aerodynamics_aerodynamics",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_aerodynamics_aerodynamics",
+      "target": "missile_aerodynamics_aerodynamics_aerodynamics_der",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_rationale_86",
+      "target": "missile_aerodynamics_aerodynamics_aerodynamics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "missile_aerodynamics_rationale_201",
+      "target": "missile_aerodynamics_aerodynamics_aerodynamics_der",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_database_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_environment_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_kinematics_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_newton_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_euler_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_actuator_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_propulsion_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_forces_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_control_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_guidance_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "missile_missile_py",
+      "target": "missile_missile_missile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/missile.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "missile_missile_missile",
+      "target": "missile_missile_missile_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L5",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_database_sraam6_database",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L6",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_environment_environment",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_kinematics_kinematics",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L8",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_newton_newton",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_euler_euler",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L11",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_actuator_actuator",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L12",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_propulsion_propulsion",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_forces_forces",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L14",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_control_control",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "missile/missile.py",
+      "source_location": "L15",
+      "weight": 0.8,
+      "source": "missile_missile_missile",
+      "target": "missile_guidance_guidance",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "simulate.py",
+      "source_location": "L332",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_run",
+      "target": "missile_missile_missile"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "missile_missile_missile_init",
+      "target": "missile_database_sraam6_database"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "missile_kinematics_py",
+      "target": "missile_kinematics_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "missile_kinematics_py",
+      "target": "missile_kinematics_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "missile_kinematics_py",
+      "target": "missile_kinematics_mat3tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "missile_kinematics_py",
+      "target": "missile_kinematics_kinematics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics_kinematics",
+      "target": "missile_kinematics_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics_kinematics",
+      "target": "missile_kinematics_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "missile_kinematics_rationale_15",
+      "target": "missile_kinematics_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics_init_from_euler",
+      "target": "missile_kinematics_mat3tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "missile_kinematics_rationale_20",
+      "target": "missile_kinematics_mat3tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics",
+      "target": "missile_kinematics_kinematics_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics",
+      "target": "missile_kinematics_kinematics_init_from_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics",
+      "target": "missile_kinematics_kinematics_kinematics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "missile_kinematics_kinematics_init",
+      "target": "missile_kinematics_kinematics_init_from_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "missile_kinematics_rationale_69",
+      "target": "missile_kinematics_kinematics_init_from_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/kinematics.py",
+      "source_location": "L101",
+      "weight": 1.0,
+      "source": "missile_kinematics_rationale_101",
+      "target": "missile_kinematics_kinematics_kinematics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "missile_database_py",
+      "target": "missile_database_sraam6_database",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "missile_database_sraam6_database",
+      "target": "missile_database_sraam6_database_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "missile_database_sraam6_database",
+      "target": "missile_database_sraam6_database_load_aero_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "source": "missile_database_sraam6_database",
+      "target": "missile_database_sraam6_database_save_aero_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "missile_database_sraam6_database",
+      "target": "missile_database_sraam6_database_load_propulsion_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "missile_database_sraam6_database_load_aero_deck",
+      "target": "missile_database_sraam6_database_save_aero_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "missile_database_rationale_18",
+      "target": "missile_database_sraam6_database_load_aero_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "missile_database_rationale_48",
+      "target": "missile_database_sraam6_database_save_aero_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/database.py",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "missile_database_rationale_71",
+      "target": "missile_database_sraam6_database_load_propulsion_deck",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_euler_py",
+      "target": "missile_euler_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "missile_euler_py",
+      "target": "missile_euler_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "missile_euler_euler_euler",
+      "target": "missile_euler_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "missile_euler_rationale_5",
+      "target": "missile_euler_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "missile_euler_euler",
+      "target": "missile_euler_euler_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "missile_euler_euler",
+      "target": "missile_euler_euler_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/euler.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "missile_euler_rationale_21",
+      "target": "missile_euler_euler_euler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_propulsion_py",
+      "target": "missile_propulsion_propulsion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "missile_propulsion_propulsion",
+      "target": "missile_propulsion_propulsion_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "missile_propulsion_propulsion",
+      "target": "missile_propulsion_propulsion_propulsion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/propulsion.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "missile_propulsion_rationale_26",
+      "target": "missile_propulsion_propulsion_propulsion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "missile_control_py",
+      "target": "missile_control_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "missile_control_py",
+      "target": "missile_control_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "missile_control_py",
+      "target": "missile_control_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "missile_control_control_control_rate",
+      "target": "missile_control_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L364",
+      "weight": 1.0,
+      "source": "missile_control_control_control_ndi",
+      "target": "missile_control_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L494",
+      "weight": 1.0,
+      "source": "missile_control_control_control_indi",
+      "target": "missile_control_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L649",
+      "weight": 1.0,
+      "source": "missile_control_control_control_ndi_cop",
+      "target": "missile_control_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L240",
+      "weight": 1.0,
+      "source": "missile_control_control_control_accel",
+      "target": "missile_control_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "missile_control_rationale_16",
+      "target": "missile_control_integrate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_roll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_accel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L295",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_ndi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L436",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_indi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L577",
+      "weight": 1.0,
+      "source": "missile_control_control",
+      "target": "missile_control_control_control_ndi_cop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_roll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L92",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_accel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_ndi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L102",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_indi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "missile_control_control_control",
+      "target": "missile_control_control_control_ndi_cop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "missile_control_rationale_79",
+      "target": "missile_control_control_control",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "missile_control_rationale_111",
+      "target": "missile_control_control_control_roll",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "missile_control_rationale_145",
+      "target": "missile_control_control_control_rate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "missile_control_rationale_195",
+      "target": "missile_control_control_control_accel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L296",
+      "weight": 1.0,
+      "source": "missile_control_rationale_296",
+      "target": "missile_control_control_control_ndi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L437",
+      "weight": 1.0,
+      "source": "missile_control_rationale_437",
+      "target": "missile_control_control_control_indi",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/control.py",
+      "source_location": "L578",
+      "weight": 1.0,
+      "source": "missile_control_rationale_578",
+      "target": "missile_control_control_control_ndi_cop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_actuator_py",
+      "target": "missile_actuator_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "missile_actuator_py",
+      "target": "missile_actuator_actuator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator_actuator",
+      "target": "missile_actuator_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L142",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator_actuator_scnd",
+      "target": "missile_actuator_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "missile_actuator_rationale_5",
+      "target": "missile_actuator_sign",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator",
+      "target": "missile_actuator_actuator_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator",
+      "target": "missile_actuator_actuator_actuator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L118",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator",
+      "target": "missile_actuator_actuator_actuator_scnd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "source": "missile_actuator_actuator_actuator",
+      "target": "missile_actuator_actuator_actuator_scnd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "missile_actuator_rationale_52",
+      "target": "missile_actuator_actuator_actuator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/actuator.py",
+      "source_location": "L119",
+      "weight": 1.0,
+      "source": "missile_actuator_rationale_119",
+      "target": "missile_actuator_actuator_actuator_scnd",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/forces.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "missile_forces_py",
+      "target": "missile_forces_forces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/forces.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "missile_forces_forces",
+      "target": "missile_forces_forces_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/forces.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "missile_forces_forces",
+      "target": "missile_forces_forces_forces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/forces.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "missile_forces_rationale_15",
+      "target": "missile_forces_forces_forces",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "missile_guidance_py",
+      "target": "missile_guidance_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "missile_guidance_py",
+      "target": "missile_guidance_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "missile_guidance_py",
+      "target": "missile_guidance_guidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L204",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_pronav_mid",
+      "target": "missile_guidance_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L266",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_line_mid",
+      "target": "missile_guidance_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_13",
+      "target": "missile_guidance_pol_from_cart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L272",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_line_mid",
+      "target": "missile_guidance_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_31",
+      "target": "missile_guidance_mat2tr",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "missile_guidance_guidance_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "missile_guidance_guidance_guidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L182",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "missile_guidance_guidance_pronav_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L241",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "missile_guidance_guidance_line_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L316",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance",
+      "target": "missile_guidance_guidance_pronav_term_comp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_50",
+      "target": "missile_guidance_guidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_guidance",
+      "target": "missile_guidance_guidance_pronav_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_guidance",
+      "target": "missile_guidance_guidance_line_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "missile_guidance_guidance_guidance",
+      "target": "missile_guidance_guidance_pronav_term_comp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_84",
+      "target": "missile_guidance_guidance_guidance",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_183",
+      "target": "missile_guidance_guidance_pronav_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L242",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_242",
+      "target": "missile_guidance_guidance_line_mid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/guidance.py",
+      "source_location": "L317",
+      "weight": 1.0,
+      "source": "missile_guidance_rationale_317",
+      "target": "missile_guidance_guidance_pronav_term_comp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "missile_newton_py",
+      "target": "missile_newton_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "missile_newton_py",
+      "target": "missile_newton_newton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "missile_newton_newton_newton",
+      "target": "missile_newton_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "missile_newton_rationale_6",
+      "target": "missile_newton_integrate_vec",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "missile_newton_newton",
+      "target": "missile_newton_newton_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "source": "missile_newton_newton",
+      "target": "missile_newton_newton_newton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "missile_newton_rationale_38",
+      "target": "missile_newton_newton_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/newton.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "missile_newton_rationale_54",
+      "target": "missile_newton_newton_newton",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "missile_environment_py",
+      "target": "missile_environment_atmosphere76",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "source": "missile_environment_py",
+      "target": "missile_environment_environment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "missile_environment_environment_environment",
+      "target": "missile_environment_atmosphere76",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "missile_environment_rationale_12",
+      "target": "missile_environment_atmosphere76",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "missile_environment_environment",
+      "target": "missile_environment_environment_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "missile_environment_environment",
+      "target": "missile_environment_environment_environment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "missile/environment.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "missile_environment_rationale_82",
+      "target": "missile_environment_environment_environment",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "target_py",
+      "target": "missile_main_main_target_cw_perp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "target_py",
+      "target": "missile_main_main_target_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_main_main_target_rationale_1",
+      "target": "target_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L94",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target_accel",
+      "target": "missile_main_main_target_cw_perp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "missile_main_main_target_rationale_24",
+      "target": "missile_main_main_target_cw_perp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target",
+      "target": "missile_main_main_target_target_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target",
+      "target": "missile_main_main_target_target_accel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target",
+      "target": "missile_main_main_target_target_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target",
+      "target": "missile_main_main_target_target_step",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "simulate.py",
+      "source_location": "L331",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_run",
+      "target": "missile_main_main_target_target"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L191",
+      "weight": 1.0,
+      "source": "missile_main_main_target_target_step",
+      "target": "missile_main_main_target_target_accel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "missile_main_main_target_rationale_178",
+      "target": "missile_main_main_target_target_state",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "target.py",
+      "source_location": "L188",
+      "weight": 1.0,
+      "source": "missile_main_main_target_rationale_188",
+      "target": "missile_main_main_target_target_step",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "config.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_main_main_config_rationale_1",
+      "target": "config_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L290",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_parse_scenario",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L304",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L507",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_save_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L520",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_save_unity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L535",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_run_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L557",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_print_summary_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L579",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_compare",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L632",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L640",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_test_all_scenarios",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L682",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_monte_carlo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L807",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_monte_carlo_all_scenarios",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L859",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_print_mc_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L874",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_save_mc_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L909",
+      "weight": 1.0,
+      "source": "simulate_py",
+      "target": "missile_main_main_simulate_cli_help",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_1",
+      "target": "simulate_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L542",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_run_all",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L598",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_compare",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L654",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_test_all_scenarios",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L765",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_monte_carlo",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L305",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_305",
+      "target": "missile_main_main_simulate_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L549",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_run_all",
+      "target": "missile_main_main_simulate_save_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L616",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_compare",
+      "target": "missile_main_main_simulate_save_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L508",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_508",
+      "target": "missile_main_main_simulate_save_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L521",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_521",
+      "target": "missile_main_main_simulate_save_unity",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L553",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_run_all",
+      "target": "missile_main_main_simulate_print_summary_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L536",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_536",
+      "target": "missile_main_main_simulate_run_all",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L637",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_test",
+      "target": "missile_main_main_simulate_compare",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L580",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_580",
+      "target": "missile_main_main_simulate_compare",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L633",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_633",
+      "target": "missile_main_main_simulate_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L641",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_641",
+      "target": "missile_main_main_simulate_test_all_scenarios",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L793",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_monte_carlo",
+      "target": "missile_main_main_simulate_print_mc_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L796",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_monte_carlo",
+      "target": "missile_main_main_simulate_save_mc_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L828",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_monte_carlo_all_scenarios",
+      "target": "missile_main_main_simulate_monte_carlo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L693",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_693",
+      "target": "missile_main_main_simulate_monte_carlo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L817",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_817",
+      "target": "missile_main_main_simulate_monte_carlo_all_scenarios",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L860",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_860",
+      "target": "missile_main_main_simulate_print_mc_table",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "simulate.py",
+      "source_location": "L875",
+      "weight": 1.0,
+      "source": "missile_main_main_simulate_rationale_875",
+      "target": "missile_main_main_simulate_save_mc_csv",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "tests.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "missile_main_main_tests_rationale_1",
+      "target": "tests_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "debug.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "debug_py",
+      "target": "missile_missile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.db = SRAAM6_Database()",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "database_sraam6_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.environment = Environment(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "environment_environment"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.kinematics = Kinematics(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "kinematics_kinematics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.newton = Newton(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "newton_newton"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.euler = Euler(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "euler_euler"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.aerodynamics = Aerodynamics(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.actuator = Actuator(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "actuator_actuator"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.propulsion = Propulsion(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "propulsion_propulsion"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.forces = Forces(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "forces_forces"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.control = Control(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "control_control"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.guidance = Guidance(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "guidance_guidance"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.ins = INS(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "ins_ins"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "self.sensor = Sensor(self)",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "sensor_sensor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "import config",
+      "weight": 1.0,
+      "source": "missile_missile",
+      "target": "config_config"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m = Missile()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "missile_missile"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.sensor.sensor(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "sensor_sensor"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/guidance.py",
+      "source_location": "psipb = m.psipb; thtpb = m.thtpb; sigdpy = m.sigdpy; sigdpz = m.sigdpz",
+      "weight": 1.0,
+      "source": "guidance_pronav_term_comp",
+      "target": "sensor_sensor"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/sensor.py",
+      "source_location": "psipb, thtpb, sigdpy, sigdpz, dvbtc = self._sensor_kin(SBTL, dbtk)",
+      "weight": 1.0,
+      "source": "sensor_sensor",
+      "target": "sensor_sensor_kin"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/sensor.py",
+      "source_location": "psipb, thtpb, sigdpy, sigdpz \u2014 seeker outputs written by sensor, consumed by guidance._pronav_term_comp",
+      "weight": 1.0,
+      "source": "sensor_sensor",
+      "target": "guidance_guidance"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.ins.ins(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "ins_ins"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/ins.py",
+      "source_location": "EWBEB, WBECB = self._gyro_errors(WBEB, FSPB, dt)",
+      "weight": 1.0,
+      "source": "ins_ins",
+      "target": "ins_gyro_errors"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/ins.py",
+      "source_location": "EFSPB = self._accl_errors(FSPB)",
+      "weight": 1.0,
+      "source": "ins_ins",
+      "target": "ins_accl_errors"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/ins.py",
+      "source_location": "FSPB = m.FSPB; SBEL = m.SBEL; VBEL = m.VBEL \u2014 truth channels written by newton, read by ins",
+      "weight": 1.0,
+      "source": "ins_ins",
+      "target": "newton_newton"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/ins.py",
+      "source_location": "WBEB = m.WBEB \u2014 truth body rates written by euler, read by ins",
+      "weight": 1.0,
+      "source": "ins_ins",
+      "target": "euler_euler"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/guidance.py",
+      "source_location": "SBELC, VBELC, TBLC \u2014 INS estimates consumed by guidance",
+      "weight": 1.0,
+      "source": "guidance_guidance",
+      "target": "ins_ins"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "WBECB, FSPCB, dvbec, alphaxc, betaxc \u2014 INS estimates consumed by control",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "ins_ins"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.aerodynamics.aerodynamics()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "self.aerodynamics_der()",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics",
+      "target": "aerodynamics_aerodynamics_der"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "db = m.db.aero_db",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics",
+      "target": "database_sraam6_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/forces.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "forces_forces",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "dlp = m.aerodynamics.dlp; dld = m.aerodynamics.dld",
+      "weight": 1.0,
+      "source": "control_control_roll",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "control_control_rate",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "control_control_accel",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "control_control_ndi",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "control_control_indi",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "aero = m.aerodynamics",
+      "weight": 1.0,
+      "source": "control_control_ndi_cop",
+      "target": "aerodynamics_aerodynamics"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "mach, pdynmc \u2014 written by environment, read by aerodynamics",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics",
+      "target": "environment_environment"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "alphax, betax, alppx, dvbe \u2014 incidence angles written by kinematics, read by aerodynamics",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics",
+      "target": "kinematics_kinematics"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.kinematics.kinematics(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "kinematics_kinematics"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/kinematics.py",
+      "source_location": "WBECB = m.WBECB \u2014 angular velocity written by euler, read by kinematics",
+      "weight": 1.0,
+      "source": "kinematics_kinematics",
+      "target": "euler_euler"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/aerodynamics.py",
+      "source_location": "db = m.db.aero_db",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics_der",
+      "target": "database_sraam6_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/propulsion.py",
+      "source_location": "db = m.db.prop_db",
+      "weight": 1.0,
+      "source": "propulsion_propulsion",
+      "target": "database_sraam6_database"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/missile.py",
+      "source_location": "db.load_aero_deck(config.AERO_DECK); db.load_propulsion_deck(config.PROP_DECK)",
+      "weight": 1.0,
+      "source": "database_sraam6_database",
+      "target": "config_config"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.euler.euler(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "euler_euler"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/euler.py",
+      "source_location": "FMB = m.FMB \u2014 total moments written by forces, read by euler",
+      "weight": 1.0,
+      "source": "euler_euler",
+      "target": "forces_forces"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.propulsion.propulsion()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "propulsion_propulsion"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/propulsion.py",
+      "source_location": "press \u2014 atmospheric pressure from environment, used for thrust correction",
+      "weight": 1.0,
+      "source": "propulsion_propulsion",
+      "target": "environment_environment"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.control.control(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "control_control"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_roll()",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_roll"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_rate()",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_rate"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_accel(int_step)",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_accel"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_ndi(int_step)",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_ndi"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_indi(int_step)",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_indi"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "self.control_ndi_cop(int_step)",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "control_control_ndi_cop"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "import config; wn_ndi_q = config.WN_NDI_Q",
+      "weight": 1.0,
+      "source": "control_control",
+      "target": "config_config"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.actuator.actuator(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "actuator_actuator"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/actuator.py",
+      "source_location": "self.actuator_scnd(int_step)",
+      "weight": 1.0,
+      "source": "actuator_actuator",
+      "target": "actuator_actuator_scnd"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.forces.forces()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "forces_forces"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/newton.py",
+      "source_location": "FAPB = m.FAPB \u2014 written by forces, read by newton",
+      "weight": 1.0,
+      "source": "newton_newton",
+      "target": "forces_forces"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.guidance.guidance()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "guidance_guidance"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/guidance.py",
+      "source_location": "ACBX = self._pronav_mid(STBLC, VTELC)",
+      "weight": 1.0,
+      "source": "guidance_guidance",
+      "target": "guidance_pronav_mid"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/guidance.py",
+      "source_location": "ACBX = self._pronav_term_comp()",
+      "weight": 1.0,
+      "source": "guidance_guidance",
+      "target": "guidance_pronav_term_comp"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/guidance.py",
+      "source_location": "ACBX = self._line_mid(...)",
+      "weight": 1.0,
+      "source": "guidance_guidance",
+      "target": "guidance_line_mid"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.newton.newton(DT)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "newton_newton"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "m.environment.environment()",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "environment_environment"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/environment.py",
+      "source_location": "rho, press, tempk = atmosphere76(hbe)",
+      "weight": 1.0,
+      "source": "environment_environment",
+      "target": "environment_atmosphere76"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "import config",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "config_config"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "tgt = Target(scenario)",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "target_target"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "_, res_str, cpa = run(scenario, cfg=run_cfg, verbose=False)",
+      "weight": 1.0,
+      "source": "simulate_monte_carlo",
+      "target": "simulate_run"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "log, result, cpa = run(scenario, cfg=cfg_full, verbose=False)",
+      "weight": 1.0,
+      "source": "simulate_compare",
+      "target": "simulate_run"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "from tests import TESTS",
+      "weight": 1.0,
+      "source": "simulate_run",
+      "target": "tests_tests"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "simulate.py",
+      "source_location": "from tests import TESTS; spec = TESTS[test_name]; compare(scenario, spec['title'], spec['variants'])",
+      "weight": 1.0,
+      "source": "tests_tests",
+      "target": "simulate_compare"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "missile/control.py",
+      "source_location": "dna, dma, dmq, dmd, dyb, dlnb, dlnr, dlnd, wnq, wnr \u2014 dimensional derivatives computed by aerodynamics_der, consumed by control_accel",
+      "weight": 1.0,
+      "source": "aerodynamics_aerodynamics_der",
+      "target": "control_control_accel"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "missile/control.py",
+      "source_location": "Both implement three-loop NDI (force\u2192\u03b1/\u03b2, kinematic\u2192rate, moment inversion); NDI-CoP adds CoP reformulation to cancel NMP zero",
+      "weight": 0.85,
+      "source": "control_control_ndi",
+      "target": "control_control_ndi_cop"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "missile/control.py",
+      "source_location": "NDI and INDI share the same outer/middle loops; INDI replaces the full-model inner loop with an incremental form",
+      "weight": 0.85,
+      "source": "control_control_ndi",
+      "target": "control_control_indi"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "missile/guidance.py",
+      "source_location": "Both implement proportional navigation; mid uses datalink geometry while terminal uses seeker LOS rates",
+      "weight": 0.75,
+      "source": "guidance_pronav_mid",
+      "target": "guidance_pronav_term_comp"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "physics_integration_loop",
+      "label": "6-DoF Physics Integration Loop",
+      "nodes": [
+        "environment_environment",
+        "kinematics_kinematics",
+        "aerodynamics_aerodynamics",
+        "propulsion_propulsion",
+        "forces_forces",
+        "euler_euler",
+        "newton_newton"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "simulate.py"
+    },
+    {
+      "id": "guidance_sensor_chain",
+      "label": "Midcourse-to-Terminal Guidance Hand-off Chain",
+      "nodes": [
+        "sensor_sensor",
+        "guidance_guidance",
+        "ins_ins"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "simulate.py"
+    },
+    {
+      "id": "autopilot_variants_pattern",
+      "label": "Multi-Mode Autopilot Pattern (Accel / NDI / INDI / NDI-CoP)",
+      "nodes": [
+        "control_control_accel",
+        "control_control_ndi",
+        "control_control_indi",
+        "control_control_ndi_cop"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "missile/control.py"
+    }
+  ],
+  "built_at_commit": "7b5ad3ff420bbfed71f7cd288be2aacf76a0a149"
+}

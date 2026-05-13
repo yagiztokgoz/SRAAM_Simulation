@@ -18,29 +18,36 @@ from missile.database import SRAAM6_Database
 
 
 def main():
-    out_path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "simulink" / "aero_tables.mat"
+    out_path = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "simulink" / "data" / "aero_tables.mat"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     db = SRAAM6_Database()
     db.load_aero_deck(config.AERO_DECK)
+    db.load_propulsion_deck(config.PROP_DECK)
 
     mat = {
-        "mach_bp": db.mach_grid,
+        "mach_bp":  db.mach_grid,
         "alpha_bp": db.alpha_grid,
-        "beta_bp": db.beta_grid,
+        "beta_bp":  db.beta_grid,
     }
 
+    # Aero tables
     for name, interp in db.aero_db.items():
         if hasattr(interp, "values"):
-            # RegularGridInterpolator: table shape is (Mach, Alpha, Beta).
-            mat[name] = interp.values
+            mat[name] = interp.values          # 3-D: shape (Mach, Alpha, Beta)
         else:
-            # interp1d: x is Mach breakpoints, y is table values.
-            mat[name] = interp.y
+            mat[name] = interp.y               # 1-D: values at mach_bp
+
+    # Propulsion tables — export breakpoints + values separately
+    for name, interp in db.prop_db.items():
+        mat[f"prop_{name}_t"] = interp.x      # time breakpoints
+        mat[f"prop_{name}_v"] = interp.y      # values
 
     savemat(out_path, mat)
     print(f"Wrote {out_path}")
-    print(f"1-D/3-D aero tables: {len(db.aero_db)}")
+    print(f"  Aero tables:      {len(db.aero_db)}")
+    print(f"  Propulsion tables: {len(db.prop_db)}")
+    print(f"  Prop keys: {list(db.prop_db.keys())}")
 
 
 if __name__ == "__main__":

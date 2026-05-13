@@ -46,6 +46,10 @@ class Target:
         8: "Last-ditch break    |  t=4s ~9-g combined break (endgame)",
         9: "Energy-bleed climb  |  afterburner ~3-g climbing turn",
        10: "Coordinated turn    |  sustained 4-g target turn",
+       11: "Long range straight |  12km, t~10s",
+       12: "Very long range     |  15km, t~14s",
+       13: "Tail-chase escape   |  target fleeing, t~10s",
+       14: "Long range beam     |  10km, 90° notch, t~10s",
     }
 
     # Initial positions (NED, m) and velocities (m/s).
@@ -63,6 +67,11 @@ class Target:
         6: dict(pos=( 7000,     0, -10000), vel=(-300,    0,    0)),
         # S7  Look-down: target at 7500 m, missile at 10 000 m
         7: dict(pos=( 5500,  1000,  -7500), vel=(-220,    0,    0)),
+        # S11-S14: uzun uçuş süreli senaryolar
+       11: dict(pos=(12000,  2000, -10000), vel=(-200,    0,    0)),
+       12: dict(pos=(15000,  3000, -10000), vel=(-200,    0,    0)),
+       13: dict(pos=( 8000,     0, -10000), vel=( 200,    0,    0)),
+       14: dict(pos=(10000, -3000, -10000), vel=(   0,  250,    0)),
         # S8  Last-ditch: same as S1 geometry, late combined break
         8: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
         # S9  Energy-bleed: faster target, slight North offset
@@ -170,6 +179,34 @@ class Target:
             ax = -self.vel[1] / v_mag * 4.0 * G
             ay =  self.vel[0] / v_mag * 4.0 * G
             return np.array([ax, ay, 0.0])
+
+        # ── S11: 12km + t>7s geç 6g sağ kırılma ─────────────────────────────
+        elif s == 11:
+            if t >= 7.0:
+                return 6.0 * G * _cw_perp(self.vel)
+            return np.zeros(3)
+
+        # ── S12: 15km + sinüsoidal jink (3g yanal + 2g dikey) ────────────────
+        elif s == 12:
+            if t >= 5.0:
+                ay =  3.0 * G * math.sin(1.0 * (t - 5.0))
+                az = -2.0 * G * math.cos(1.5 * (t - 5.0))
+                return np.array([0.0, ay, az])
+            return np.zeros(3)
+
+        # ── S13: Tail-chase + t>4s 7g yukarı çekme + t>6s sağ kırılma ───────
+        elif s == 13:
+            if t >= 6.0:
+                return 7.0 * G * _cw_perp(self.vel)
+            elif t >= 4.0:
+                return np.array([0.0, 0.0, -7.0 * G])
+            return np.zeros(3)
+
+        # ── S14: Uzun beam + t>6s 8g sharp break ─────────────────────────────
+        elif s == 14:
+            if t >= 6.0:
+                return 8.0 * G * _cw_perp(self.vel)
+            return np.zeros(3)
 
         else:
             return np.zeros(3)
