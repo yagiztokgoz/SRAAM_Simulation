@@ -502,3 +502,11 @@ python3 simulate.py unity 3 5      # scenario 3, every 5th frame (smaller file)
 Output: `logs/unity/s<N>.json`
 
 The JSON includes missile and target position, attitude, fin angles, and engagement metadata at each exported timestep. A stride value > 1 reduces file size while preserving visual fidelity at typical playback frame rates.
+
+---
+
+## References
+
+Zipfel, P. H. (2007). *Modeling and Simulation of Aerospace Vehicle Dynamics* (2nd ed.). AIAA Education Series. American Institute of Aeronautics and Astronautics. ISBN 978-1-56347-621-3.
+
+The equations of motion, aerodynamic coefficient conventions, INS error model, and guidance law implementations in this project follow the CADAC (Computer-Aided Design of Aerospace Concepts) framework described in this book.
