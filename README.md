@@ -9,10 +9,10 @@ A high-fidelity, 6-degrees-of-freedom missile intercept simulation framework dev
 
 ## Example Outputs
 
-### Engagement Trajectory — Scenario 3 (Sinusoidal Jink)
-![Trajectory S3](plots/s3_trajectory.png)
+### Engagement Trajectory — Scenario 4 (Sharp L-Maneuver)
+![Trajectory S4](plots/s4_trajectory.png)
 
-3D engagement geometry, top view (N-E plane), side view (N-Alt), and slant range to target over time. CPA passed at t = 5.23 s with a miss distance of 0.32 m.
+3D engagement geometry, top view (N-E plane), side view (N-Alt), and slant range to target over time. Target executes an 8-g right break followed by a 6-g pull-up; intercept at t = 5.31 s with a miss distance of 29.20 m.
 
 ### Autopilot Comparison — Accel vs NDI vs INDI (Scenario 3)
 ![Autopilot Comparison S3](plots/s3_cmp_Accel_vs_NDI_vs_INDI_overview.png)
