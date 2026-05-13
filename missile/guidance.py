@@ -220,6 +220,15 @@ class Guidance(object):
         # pro-nav acceleration command (body axes) - g's
         ACBX = TBL @ np.cross(WOELC, UTBLC) * gnav * dvtbc / AGRAV
 
+        # Gravity compensation perpendicular to LOS (augmented PN).
+        # When missile is at same altitude as target: LOS is horizontal → full 1g upward.
+        # When missile lofts above target: LOS tilts down → gravity becomes along-LOS →
+        # compensation naturally shrinks → PN alone descends to target without overshoot.
+        GRAVL = np.array([0.0, 0.0, 1.0])                      # gravity unit vec in NED
+        grav_perp_los = GRAVL - np.dot(GRAVL, UTBLC) * UTBLC   # gravity ⊥ LOS in NED
+        ACBX[1] -= (TBL @ grav_perp_los)[1]
+        ACBX[2] -= (TBL @ grav_perp_los)[2]
+
         # store diagnostics
         self.dtbc   = dtbc
         self.dvtbc  = dvtbc
@@ -232,81 +241,6 @@ class Guidance(object):
         m.dtbc   = dtbc
         m.dvtbc  = dvtbc
         m.tgoc   = tgoc
-
-        return ACBX
-
-
-    # ── midcourse line guidance ────────────────────────────────────────────────
-
-    def _line_mid(self, STALC, STBLC, VBELC, nl_gain_fact):
-        """Line guidance: steer missile along the target-aircraft line.
-
-        Args:
-            STALC:       target wrt aircraft in local axes - m
-            STBLC:       target wrt missile in local axes - m
-            VBELC:       missile velocity in local axes - m/s
-            nl_gain_fact: nonlinear gain factor - ND
-        Returns:
-            ACBX: acceleration command in body axes - g's
-        """
-        m         = self.missile
-        TBL       = m.TBLC        # INS-estimated DCM
-        grav      = m.grav
-        line_gain = m.line_gain
-        decrement = m.decrement
-        thtflx    = m.thtflx     # vertical LOA angle override (0 → compute on-line)
-
-        thtvlx = m.thtvlx   # vertical flight path angle - deg (from newton)
-        psivlx = m.psivlx   # heading angle - deg (from newton)
-
-        # missile pos wrt launch point
-        SBTL = m.SBELC - m.SLEL   # missile pos (INS estimate) wrt launch
-
-        # LOA frame: direction from aircraft to target
-        POLAR_LOA = pol_from_cart(STALC)
-        dtac  = POLAR_LOA[0]
-        az_loa = POLAR_LOA[1]
-        el_loa = POLAR_LOA[2]
-
-        if thtflx == 0.0:
-            TFL = mat2tr(az_loa, el_loa)
-        else:
-            TFL = mat2tr(az_loa, thtflx * RAD)
-
-        # LOS frame: direction from missile to target
-        POLAR_LOS = pol_from_cart(STBLC)
-        dtbc  = POLAR_LOS[0]
-        az_los = POLAR_LOS[1]
-        el_los = POLAR_LOS[2]
-        TOL = mat2tr(az_los, el_los)
-
-        # velocity-frame DCM
-        TVL = mat2tr(psivlx * RAD, thtvlx * RAD)
-        TBV = TBL @ TVL.T
-
-        # missile velocity in LOS and LOA frames
-        VBEO = TOL @ VBELC
-        VBEF = TFL @ VBELC
-
-        # nonlinear gain
-        nl_gain = nl_gain_fact * (1.0 - math.exp(-dtbc / max(decrement, SMALL)))
-
-        # line guidance steering law (velocity axes) - g's
-        algv1 =  grav * math.sin(thtvlx * RAD) / AGRAV
-        algv2 =  line_gain * (-VBEO[1] + nl_gain * VBEF[1]) / AGRAV
-        algv3 =  line_gain * ((-VBEO[2] + nl_gain * VBEF[2])
-                               - grav * math.cos(thtvlx * RAD)) / AGRAV
-
-        ACVX = np.array([algv1, algv2, algv3])
-
-        # convert to body axes
-        ACBX = TBV @ ACVX
-
-        # diagnostic: missile position normal to LOS
-        SBTO = TOL @ SBTL
-
-        self.dtbc = dtbc
-        m.dtbc = dtbc
 
         return ACBX
 

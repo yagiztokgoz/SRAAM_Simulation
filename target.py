@@ -50,34 +50,38 @@ class Target:
        12: "Very long range     |  15km, t~14s",
        13: "Tail-chase escape   |  target fleeing, t~10s",
        14: "Long range beam     |  10km, 90° notch, t~10s",
+       15: "Max range level     |  25km, level straight flight",
     }
 
     # Initial positions (NED, m) and velocities (m/s).
     # S1-S4: same ~6200 m range, 72° aspect engagement geometry.
     # S5-S10: dedicated scenario geometries.
     _INIT = {
-        #          North    East    Down         vN      vE     vD
-        1: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
-        2: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
-        3: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
-        4: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
+        #           North    East    Down         vN      vE     vD
+        # S1-S4: same ~6200 m range, 72° aspect engagement geometry
+        1:  dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
+        2:  dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
+        3:  dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
+        4:  dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
         # S5  Beaming: target NW, flying due East (notch angle ~90°)
-        5: dict(pos=( 5500, -2000, -10000), vel=(   0,  300,    0)),
+        5:  dict(pos=( 5500, -2000, -10000), vel=(   0,  300,    0)),
         # S6  Head-on: closing at Mach ~1, head-on from North
-        6: dict(pos=( 7000,     0, -10000), vel=(-300,    0,    0)),
-        # S7  Look-down: target at 7500 m, missile at 10 000 m
-        7: dict(pos=( 5500,  1000,  -7500), vel=(-220,    0,    0)),
-        # S11-S14: uzun uçuş süreli senaryolar
-       11: dict(pos=(12000,  2000, -10000), vel=(-200,    0,    0)),
-       12: dict(pos=(15000,  3000, -10000), vel=(-200,    0,    0)),
-       13: dict(pos=( 8000,     0, -10000), vel=( 200,    0,    0)),
-       14: dict(pos=(10000, -3000, -10000), vel=(   0,  250,    0)),
+        6:  dict(pos=( 7000,     0, -10000), vel=(-300,    0,    0)),
+        # S7  Look-down: target at 7500 m altitude, missile at 10 000 m
+        7:  dict(pos=( 5500,  1000,  -7500), vel=(-220,    0,    0)),
         # S8  Last-ditch: same as S1 geometry, late combined break
-        8: dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
+        8:  dict(pos=( 6000,  1500, -10000), vel=(-200,    0,    0)),
         # S9  Energy-bleed: faster target, slight North offset
-        9: dict(pos=( 6500,   800, -10000), vel=(-250,    0,    0)),
+        9:  dict(pos=( 6500,   800, -10000), vel=(-250,    0,    0)),
         # S10 Coordinated turn: long range, target already in banked turn
-       10: dict(pos=(10000, -1000, -12000), vel=(-180,  120,    0)),
+        10: dict(pos=(10000, -1000, -12000), vel=(-180,  120,    0)),
+        # S11-S15: uzun menzil senaryoları
+        11: dict(pos=(12000,  2000, -10000), vel=(-200,    0,    0)),
+        12: dict(pos=(15000,  3000, -10000), vel=(-200,    0,    0)),
+        13: dict(pos=( 8000,     0, -10000), vel=( 200,    0,    0)),
+        14: dict(pos=(10000, -3000, -10000), vel=(   0,  250,    0)),
+        # S15  Max range level: 25 km North, 4 km East offset, 10 000 m alt
+        15: dict(pos=(25000,  4000, -10000), vel=(-60,    0,    0)),
     }
 
     def __init__(self, scenario):
@@ -206,6 +210,10 @@ class Target:
         elif s == 14:
             if t >= 6.0:
                 return 8.0 * G * _cw_perp(self.vel)
+            return np.zeros(3)
+
+        # ── S15: 25 km max-range level — sabit irtifa, düz uçuş ─────────────
+        elif s == 15:
             return np.zeros(3)
 
         else:

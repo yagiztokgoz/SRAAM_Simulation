@@ -498,6 +498,10 @@ def run(scenario=1, cfg=None, verbose=True):
         if verbose:
             print(f"\n{result}")
 
+    if verbose and log:
+        total_path_km = sum(r['dvbe'] * LOG_DT for r in log) / 1000.0
+        print(f"  Toplam yol: {total_path_km:.2f} km")
+
     cpa = {'min_dist': min_dtbc, 't_cpa': min_t, 'pos': min_pos}
     return log, result, cpa
 
@@ -541,9 +545,10 @@ def run_all(scenarios=None, hit_radius=0.0, save_csvs=False, show_plots=False):
     for s in scenarios:
         log, result, cpa = run(s, cfg={'hit_r': hit_radius})
         if not log:
-            rows.append((s, float('nan'), float('nan'), 'EMPTY LOG'))
+            rows.append((s, float('nan'), float('nan'), float('nan'), 'EMPTY LOG'))
             continue
-        rows.append((s, cpa['min_dist'], cpa['t_cpa'], result))
+        total_path_km = sum(r['dvbe'] * LOG_DT for r in log) / 1000.0
+        rows.append((s, cpa['min_dist'], cpa['t_cpa'], total_path_km, result))
 
         if save_csvs:
             save_csv(log, f's{s}')
@@ -555,15 +560,15 @@ def run_all(scenarios=None, hit_radius=0.0, save_csvs=False, show_plots=False):
 
 
 def _print_summary_table(rows, hit_radius):
-    print("\n" + "=" * 78)
+    print("\n" + "=" * 90)
     print(f"  SUMMARY  —  {len(rows)} scenarios  (HIT_R={hit_radius})")
-    print("=" * 78)
-    print(f"  {'S':>3}  {'min_dist [m]':>12}  {'t_CPA [s]':>10}   result")
-    print("  " + "-" * 74)
-    for s, d, tc, res in rows:
+    print("=" * 90)
+    print(f"  {'S':>3}  {'min_dist [m]':>12}  {'t_CPA [s]':>10}  {'yol [km]':>10}   senaryo")
+    print("  " + "-" * 86)
+    for s, d, tc, path_km, _ in rows:
         name = Target.NAMES[s].split('|')[0].strip()
-        print(f"  {s:>3}  {d:>12.2f}  {tc:>10.3f}   {name}")
-    print("=" * 78)
+        print(f"  {s:>3}  {d:>12.2f}  {tc:>10.3f}  {path_km:>10.2f}   {name}")
+    print("=" * 90)
 
     valid = [r for r in rows if not math.isnan(r[1])]
     if valid:
@@ -571,7 +576,7 @@ def _print_summary_table(rows, hit_radius):
         max_d  = max(r[1] for r in valid)
         min_d  = min(r[1] for r in valid)
         print(f"  mean={mean_d:.2f} m   min={min_d:.2f} m   max={max_d:.2f} m")
-        print("=" * 78)
+        print("=" * 90)
 
 
 # ── variant-comparison testbed ─────────────────────────────────────────────────

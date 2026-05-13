@@ -34,7 +34,7 @@ PROP_DECK = os.path.join(DATA_DIR, 'sraam6_prop_deck.asc')
 
 # ── Simulation loop ───────────────────────────────────────────────────────────
 DT     = 0.001    # integration step - s
-T_END  = 25.0     # max simulation time - s
+T_END  = 50.0     # max simulation time - s
 LOG_DT = 0.01     # logging sample interval - s
 HIT_R  = 0.0     # intercept radius - m   (0 → pure CPA mode)
 
@@ -153,7 +153,7 @@ THTFLX        = 0.0
 
 
 # ── INS ───────────────────────────────────────────────────────────────────────
-MINS       = 0       # 0:ideal passthrough  1:real IMU errors
+MINS       = 1       # 0:ideal passthrough  1:real IMU errors
 INS_SEED   = None    # int for deterministic bias realizations (None → random)
 
 

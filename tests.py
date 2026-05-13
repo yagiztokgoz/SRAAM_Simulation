@@ -127,4 +127,14 @@ TESTS = {
         },
     },
 
+    # ── 25 km maks menzil senaryosu ───────────────────────────────────────────
+
+    'max_range_25km': {
+        'title': '25 km Maks Menzil — Level Hedef (S15)',
+        'variants': {
+            'NDI':  {'maut': 5, 'mseek': 2, 'mins': 1},
+            'INDI': {'maut': 6, 'mseek': 2, 'mins': 1},
+        },
+    },
+
 }
