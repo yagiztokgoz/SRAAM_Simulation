@@ -7,6 +7,25 @@ A high-fidelity, 6-degrees-of-freedom missile intercept simulation framework dev
 
 ---
 
+## Example Outputs
+
+### Engagement Trajectory — Scenario 3 (Sinusoidal Jink)
+![Trajectory S3](plots/s3_trajectory.png)
+
+3D engagement geometry, top view (N-E plane), side view (N-Alt), and slant range to target over time. CPA passed at t = 5.23 s with a miss distance of 0.32 m.
+
+### Autopilot Comparison — Accel vs NDI vs INDI (Scenario 3)
+![Autopilot Comparison S3](plots/s3_cmp_Accel_vs_NDI_vs_INDI_overview.png)
+
+Side-by-side overlay of all three autopilots on the same scenario: trajectory geometry, angle of attack, pitch rate, fin commands, and acceleration tracking error. INDI shows the tightest tracking error near CPA.
+
+### Monte Carlo Miss-Distance Analysis — Scenario 1
+![Monte Carlo S1](plots/s1_mc_dist.png)
+
+Miss-distance histogram + KDE, empirical CDF, and violin plot for 25 runs per variant (NDI vs NDI-CoP). NDI-CoP achieves a CEP of 0.7 m vs NDI's 0.8 m under 15% aerodynamic model uncertainty and IMU noise.
+
+---
+
 ## Table of Contents
 
 1. [Overview](#overview)
