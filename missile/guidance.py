@@ -220,12 +220,11 @@ class Guidance(object):
         # pro-nav acceleration command (body axes) - g's
         ACBX = TBL @ np.cross(WOELC, UTBLC) * gnav * dvtbc / AGRAV
 
-        # Gravity compensation perpendicular to LOS (augmented PN).
-        # When missile is at same altitude as target: LOS is horizontal → full 1g upward.
-        # When missile lofts above target: LOS tilts down → gravity becomes along-LOS →
-        # compensation naturally shrinks → PN alone descends to target without overshoot.
-        GRAVL = np.array([0.0, 0.0, 1.0])                      # gravity unit vec in NED
-        grav_perp_los = GRAVL - np.dot(GRAVL, UTBLC) * UTBLC   # gravity ⊥ LOS in NED
+        # Augmented PN gravity bias: (N/2)/N = 0.5 of the LOS-perpendicular gravity.
+        # Full 1g causes +220m loft then -90m overshoot (S-shape).
+        # 0.5g gives ~half the loft and a cleaner arc with PN converging the rest.
+        GRAVL = np.array([0.0, 0.0, 1.0])
+        grav_perp_los = GRAVL - np.dot(GRAVL, UTBLC) * UTBLC
         ACBX[1] -= (TBL @ grav_perp_los)[1]
         ACBX[2] -= (TBL @ grav_perp_los)[2]
 

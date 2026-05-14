@@ -161,7 +161,7 @@ INS_SEED   = None    # int for deterministic bias realizations (None → random)
 #   mseek = 0: off     → seeker disabled, midcourse guidance only
 #           2: enabled → waiting for acquisition
 #           (3:acq  4:lock  5:blind — set internally at runtime)
-MSEEK     = 0
+MSEEK     = 2
 RACQ      = 5000.0   # acquisition range - m
 DTIMAC    = 0.2      # acquisition dwell time - s
 DBLIND    = 100.0    # blind range - m
